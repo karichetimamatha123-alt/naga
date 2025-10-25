@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Details</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      text-align: center;
+      margin: 0;
+    }
+    h1 {
+      background: #28a745;
+      color: white;
+      padding: 15px;
+    }
+    .task-card {
+      background: white;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .deadline {
+      color: #555;
+      font-size: 14px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Task Details</h1>
+
+  <div class="task-card">
+    <h2 id="taskName"></h2>
+    <p class="deadline" id="taskDeadline"></p>
+    <button onclick="goBack()">Add Another Task</button>
+  </div>
+
+  <script>
+    // Get data from localStorage
+    const task = localStorage.getItem("task");
+    const deadline = localStorage.getItem("deadline");
+
+    if (task && deadline) {
+      document.getElementById("taskName").textContent = task;
+      document.getElementById("taskDeadline").textContent = "🕒 Deadline: " + new Date(deadline).toLocaleString();
+    } else {
+      document.getElementById("taskName").textContent = "No task found!";
+    }
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
